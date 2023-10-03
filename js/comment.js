@@ -3,7 +3,7 @@ import { Data } from './data.js';
 
 const { MESSAGES, NAMES } = Data();
 
-const addComment = () => {
+const comment = () => {
   return {
     id: getRandomInt(0, 999),
     avatar: 'img/avatar-' + getRandomInt(1, 6) + '.svg',
@@ -12,4 +12,4 @@ const addComment = () => {
   }
 };
 
-export { addComment };
+export { comment };
