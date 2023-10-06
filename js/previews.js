@@ -1,26 +1,26 @@
-import { photos } from './photos.js';
+import { photos } from './photos.js'
 
-const pictureTemplate = document.querySelector("#picture").content.querySelector(".picture");
-const pictures = document.querySelector('.pictures');
+const previewTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const previews = document.querySelector('.pictures');
 
-const renderPicture = ({url, likes, comments}) => {
-  const randomPictureTemplate = pictureTemplate.cloneNode(true);
-  randomPictureTemplate.querySelector('.picture__img').src = url;
-  randomPictureTemplate.querySelector('.picture__likes').textContent = likes;
-  randomPictureTemplate.querySelector('.picture__comments').textContent = comments.length;
+const renderPreview = ({url, likes, comments}) => {
+  const preview = previewTemplate.cloneNode(true);
+  preview.querySelector('.picture__img').src = url;
+  preview.querySelector('.picture__comments').textContent = comments.length;
+  preview.querySelector('.picture__likes').textContent = likes;
 
-  return randomPictureTemplate;
-};
+  return preview;
+}
 
-const renderPictures = () => {
-  let renderPictureFragment = document.createDocumentFragment();
+const renderPreviews = () => {
+  let previewListFragment = document.createDocumentFragment();
 
   photos.forEach((photo) => {
-    renderPictureFragment.appendChild(renderPicture(photo));
+    previewListFragment.appendChild(renderPreview(photo));
   });
 
-  pictures.appendChild(renderPictureFragment);
-};
+  previews.appendChild(previewListFragment);
+}
 
-export { renderPictures };
+export { renderPreviews }
 
