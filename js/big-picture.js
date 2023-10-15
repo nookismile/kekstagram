@@ -10,12 +10,20 @@ const commentsLoader = document.querySelector('.comments-loader');
 const commentTemplate = document.querySelector('#comment').content.querySelector('.social__comment');
 const commentList = document.querySelector('.social__comments');
 
+const onPopupEscKeydown = (evt) => {
+  if (isEscEvent(evt)) {
+    evt.preventDefault();
+    onBigPictureClose();
+  }
+};
+
 const onBigPictureClose = () => {
   bigPicture.classList.add('hidden');
   body.classList.remove('modal-open');
   bigPictureClose.removeEventListener('click', onBigPictureClose);
+  document.removeEventListener('keydown', onPopupEscKeydown);
+
   commentList.innerHTML = '';
-  console.log('close');
 }
 
 const renderComment = (comment) => {
@@ -50,6 +58,7 @@ const show = (picture) => {
   renderComments(picture.comments);
 
   bigPictureClose.addEventListener('click', onBigPictureClose);
+  document.addEventListener('keydown', onPopupEscKeydown);
   bigPicture.classList.remove('hidden');
 }
 
