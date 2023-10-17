@@ -54,7 +54,6 @@ const onEffectRadioGroupClick = (evt) => {
     imagePreview.classList.add(currentClass);
     imagePreview.style.filter = effects[currentClass.replace('effects__preview--', '')]();
   }
-  console.log('ok');
 }
 
 effectRadioGroup.addEventListener('click', onEffectRadioGroupClick);
